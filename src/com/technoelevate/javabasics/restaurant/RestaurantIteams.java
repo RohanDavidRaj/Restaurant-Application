@@ -7,7 +7,7 @@ public class RestaurantIteams {
 	static boolean bool = true;
 	static int total = 0;
 	static List<String> list = new ArrayList<String>();
-	
+
 	static String[] iteams = { "dhosa", "idly", "puri", "maggi" };
 
 	public static void iteams() {
@@ -17,8 +17,8 @@ public class RestaurantIteams {
 		System.out.println("1 " + iteams[0] + " 10$ \n" + "2 " + iteams[1] + " 20$ \n" + "3 " + iteams[2] + " 30$ \n"
 				+ "4 " + iteams[3] + "30$ \n" + "5 " + "ORDER");
 		System.out.println("Enter the iteams choice number to add To 'cart'");
-}
-	
+	}
+
 	public static void choice() {
 		while (bool) {
 
@@ -56,14 +56,19 @@ public class RestaurantIteams {
 			case 5:
 				bool = false;
 				break;
+
+			default:
+				try {
+					throw new FaultInput("----Invalid choice---- please enter correct 'choice'");
+				} catch (FaultInput e) {
+					System.out.println(e.getMessage());
+				}
 			}
 
 		}
 		System.out.println("Order successfully placed");
-		System.out.println("your total iteams purchased" + list + " \n" + "Total Amount = " + total+"$");
-	
-		
-	}
+		System.out.println("your total iteams purchased" + list + " \n" + "Total Amount = " + total + "$");
 
+	}
 
 }

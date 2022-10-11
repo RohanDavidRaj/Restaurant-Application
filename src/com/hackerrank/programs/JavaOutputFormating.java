@@ -4,40 +4,50 @@ import java.util.*;
 
 public class JavaOutputFormating {
 	
-	 public static void format(String s1)
-     {
-		 String[] c=new String[17];
-		 int count = 0;			
-			String num = "";
-			String alpa = "";
+	public static void format(String arr) {
 
-			for (int i = 0; i < s1.length(); i++) {
-				if (Character.isDigit(s1.charAt(i))) {
-					num = num + s1.charAt(i);
-				} else if (Character.isAlphabetic(s1.charAt(i))) {
-					alpa = alpa + s1.charAt(i);
-				}
-			}
-			int temp = Integer.parseInt(s1.split(" ")[1]);
-			while (temp != 0) {
-				temp = temp / 10;
-				++count;
-			}
+		int count = 0;
+		String num = "";
+		String[] c = new String[17];
 
-			if (count == 1) {
-				System.out.println(alpa + "   00" + num);
-				
-			} else if (count == 2) {
-				System.out.println(alpa + "       0" + num);
+		String s1 = "java 10";
+		String strArray[] = s1.split(" ");
+
+//remove number from string
+		for (int i = 0; i < s1.length(); i++) {
+			if (Character.isDigit(s1.charAt(i))) {
+				num = num + s1.charAt(i);
+			}
+		}
+
+//count number 
+		int temp = Integer.parseInt(num);
+		while (temp != 0) {
+			temp = temp / 10;
+			++count;
+		}
+
+// for add 0 to number
+		if (count == 1) {
+			num = "00" + num;
+
+		} else if (count == 2) {
+			num = "0" + num;
+		}
+
+		String strArray1[] = num.split(" ");
+		c[0] = strArray[0];
+		c[16] = strArray1[0];
+
+		for (int i = 0; i < c.length; i++) {
+			if (c[i] != null) {
+				System.out.print(c[i]);
 			} else {
-				System.out.println(alpa + "      " + num);
-
+				System.out.print(" ");
 			}
-			
-			 String strArray[] = alpa.split(" ");
-            System.out.println(strArray[0]);
-		 
-     }
+		}
+
+	}
 
 
 	public static void main(String[] args) {
@@ -51,6 +61,7 @@ public class JavaOutputFormating {
 				}
 		for (int i = 0; i < arr.length; i++) {
 			format(arr[i]);
+			System.out.println();
 		}
         System.out.println("================================");
 

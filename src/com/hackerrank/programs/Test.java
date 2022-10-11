@@ -2,73 +2,70 @@ package com.hackerrank.programs;
 
 import java.util.Arrays;
 import java.util.Iterator;
+import java.util.Scanner;
 
 public class Test {
-	public static void main(String[] args) {
+	public static void format(String arr) {
 
 		int count = 0;
 		String num = "";
-		String alpa = "";
 		String[] c = new String[17];
 
-		String s1 = "java 10";
+		String s1 = arr;
 		String strArray[] = s1.split(" ");
-		System.out.println(Arrays.toString(strArray));
 
-		c[0] = strArray[0];
-		c[16] = strArray[1];
-
+//remove number from string
 		for (int i = 0; i < s1.length(); i++) {
 			if (Character.isDigit(s1.charAt(i))) {
 				num = num + s1.charAt(i);
 			}
 		}
 
+//count number 
 		int temp = Integer.parseInt(num);
 		while (temp != 0) {
 			temp = temp / 10;
 			++count;
 		}
-		
-//    for add 0 to number
+
+// for add 0 to number
 		if (count == 1) {
-			System.out.println( "00"+num);
-			
+			num = "00" + num;
+
 		} else if (count == 2) {
-			System.out.println(alpa + "0"+ num);
-		} else {
-			System.out.println(alpa + ""+ num);
+			num = "0" + num;
 		}
 
-		for (int i = 0; i < alpa.length(); i++) {
+		String strArray1[] = num.split(" ");
+		c[0] = strArray[0];
+		c[16] = strArray1[0];
+
+		for (int i = 0; i < c.length; i++) {
 			if (c[i] != null) {
 				System.out.print(c[i]);
 			} else {
 				System.out.print(" ");
 			}
 		}
-		
-		System.out.println(num);
 
-//	  int n=s1.length()-1;
-//	  System.out.println(n);
-//
-//		for (int i = 0; i < c.length; i++) {
-//			if (Character.isDigit(s1.charAt(n-1))) {
-//				num = num + s1.charAt(i);
-//				c[c.length-1]=0;
-//			} else if (Character.isAlphabetic(s1.charAt(n))) {
-//				alpa = alpa + s1.charAt(i);
-//			    c[i]=s1.charAt(n);
-//			    n++;
-//			}else
-//			{
-//				c[i]=1;
-//			}
-//		   
-//			
-//		}
-
-		// System.out.println(c);
 	}
-}
+	
+		public static void main(String[] args) {
+			Scanner sc = new Scanner(System.in);
+	        System.out.println("================================");
+	        
+	        String[] arr=new String[3];
+			for (int j = 0; j < 3; j++) {
+	                arr[j]=sc.nextLine();
+	                 
+					}
+			for (int i = 0; i < arr.length; i++) {
+				format(arr[i]);
+				System.out.println();
+			}
+	        System.out.println("================================");
+
+
+		}
+	}
+
